@@ -8,6 +8,7 @@
    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"> </script>
    <style>
        /*The style section controls how pieces of your webpage look.*/
+       
    </style>
 </head>
 
@@ -15,9 +16,31 @@
 <body>
    <!--The body section contains the content of your webpage.-->
    <header>
-       <h2>    </h2>
+       <h2>Calculator</h2>
    </header>
    <div x-data="webApp">
+    <div>
+      <label for="num1">First Number:</label>
+      <div><input type="text" x-model="textVal" placeholder="Start typing..."> </div>
+    </div>
+    <div>
+      <label for="num2">Second Number:</label>
+      <div><input type="text" x-model="textVal" placeholder="Start typing..."></div>
+    </div>
+
+    <div>
+      <!-- @change can be used with dropdown menus. -->
+				<label for="operator-dropdown">Choose your operator for calculation:</label>
+     <div>
+      <select x-model="dropdownVal">
+  <option value="">-- Select --</option>
+  <option value="Addition">Addition</option>
+  <option value="Substraction">Substraction</option>
+  </select>
+     </div>
+    </div>
+    
+
    
 
 
@@ -33,6 +56,8 @@
        //The script section contains the JavaScript logic
        document.addEventListener('alpine:init', () => {
            Alpine.data('webApp', () => ({
+            textVal: '',
+            
                
 
 
