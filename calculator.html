@@ -1,72 +1,107 @@
 <!DOCTYPE html>
 <!-- This code was provided as starter code by my teacher. -->
+<!-- AI used to partially wtrite code and fix errors--> 
 <html>
   
 <head>
-   <!--The head section contains general information about the webpage.-->
-   <title>     </title>
+   <title>Alpine.js Calculator</title>
    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"> </script>
    <style>
-       /*The style section controls how pieces of your webpage look.*/
-       
+       body {
+           font-family: Arial, sans-serif;
+           margin: 40px;
+       }
+       .calculator-box {
+           background-color: #f4f4f4;
+           padding: 20px;
+           border-radius: 8px;
+           max-width: 400px;
+       }
+       .result {
+           margin-top: 15px;
+           font-weight: bold;
+           font-size: 1.1em;
+       }
    </style>
 </head>
 
 
 <body>
-   <!--The body section contains the content of your webpage.-->
    <header>
-       <h2>Calculator</h2>
+      <h2>Calculator</h2>
    </header>
-   <div x-data="webApp">
-    <div>
-      <label for="num1">First Number:</label>
-      <div><input type="text" x-model="textVal" placeholder="Start typing..."> </div>
-    </div>
-    <div>
-      <label for="num2">Second Number:</label>
-      <div><input type="text" x-model="textVal" placeholder="Start typing..."></div>
-    </div>
+   <div class="calculator-box" x-data="webApp">
+       
+       <!-- First Number Input -->
+       <div>
+         <label for="num1">First Number:</label>
+         <div>
+             <input type="text" x-model="numInput[0]" placeholder="Start typing...">
+         </div>
+       </div>
 
-    <div>
-      <!-- @change can be used with dropdown menus. -->
-				<label for="operator-dropdown">Choose your operator for calculation:</label>
-     <div>
-      <select x-model="dropdownVal">
-  <option value="">-- Select --</option>
-  <option value="Addition">Addition</option>
-  <option value="Substraction">Substraction</option>
-  </select>
-     </div>
-    </div>
-    
+       <br>
 
-   
+       <!-- Second Number Input -->
+       <div>
+         <label for="num2">Second Number:</label>
+         <div>
+             <input type="text" x-model="numInput[1]" placeholder="Start typing...">
+         </div>
+       </div>
 
+       <br>
 
+       <!-- Operator Selection Drop-Down Menu -->
+       <div>
+         <label for="operator-dropdown">Choose your operator for calculation:</label>
+         <div>
+             <select x-model="selectedOperator">
+               <option value="">-- Select --</option>
+               <option value="Addition">Addition</option>
+               <option value="Substraction">Substraction</option>
+             </select>
+         </div>
+       </div>
+
+       <!-- Result Display -->
+       <div class="result">
+           <p>Result: <span x-text="calculate()"></span></p>
+       </div>
    </div>
+   
+   <br>
   
-   <footer>
-       <p>© 2026-2027<br>
-       AP Computer Science Principles<br>
-       George Washington High School</p>
-   </footer>
+  <footer>
+      <p>© 2026-2027<br>
+      AP Computer Science Principles<br>
+      George Washington High School</p>
+  </footer>
   
-   <script>
-       //The script section contains the JavaScript logic
-       document.addEventListener('alpine:init', () => {
-           Alpine.data('webApp', () => ({
-            textVal: '',
-            
-               
+  <script>
+         document.addEventListener('alpine:init', () => {
+             Alpine.data('webApp', () => ({
+                 // list for storing numbers unputs
+              numInput: ['', ''],
+             
+                 // store operator
+                 selectedOperator: '',
 
+                 // calculating result based on the choosen inputs
+                 calculate() {
+                     // strings to numbers converting 
+                     let num1 = parseFloat(this.numInput[0]);
+                     let num2 = parseFloat(this.numInput[1]);
 
-
-
-
-
-           }));
-       });
+                     // actuall math
+                     if (this.selectedOperator === 'Addition') {
+                         return num1 + num2;
+                     } else if (this.selectedOperator === 'Substraction') {
+                         return num1 - num2;
+                     }
+                 }
+            }));
+         });
    </script>
 </body>
 </html>
