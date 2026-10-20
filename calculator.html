@@ -52,14 +52,17 @@
 
        <br>
 
-       <!-- Operator Selection Drop-Down Menu -->
+       <!-- Operator Selection DropDown Menu -->
        <div>
          <label for="operator-dropdown">Choose your operator for calculation:</label>
          <div>
-             <select x-model="selectedOperator">
+             <select x-model="operator">
                <option value="">-- Select --</option>
                <option value="Addition">Addition</option>
                <option value="Substraction">Substraction</option>
+               <option value="Multiplication">Multiplication</option>
+               <option value="Division">Division</option>
+
              </select>
          </div>
        </div>
@@ -85,7 +88,7 @@
               numInput: ['', ''],
              
                  // store operator
-                 selectedOperator: '',
+                 operator: '',
 
                  // calculating result based on the choosen inputs
                  calculate() {
@@ -93,11 +96,15 @@
                      let num1 = parseFloat(this.numInput[0]);
                      let num2 = parseFloat(this.numInput[1]);
 
-                     // actuall math
-                     if (this.selectedOperator === 'Addition') {
+                     // actuall math operations
+                     if (this.operator === 'Addition') {
                          return num1 + num2;
-                     } else if (this.selectedOperator === 'Substraction') {
+                     } else if (this.operator === 'Substraction') {
                          return num1 - num2;
+                     }else if (this.operator === 'Multiplication') {
+                         return num1 * num2;
+                     }else if (this.operator === 'Division') {
+                         return num1 / num2;
                      }
                  }
             }));
