@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- This code was provided as starter code by my teacher. -->
 <!-- AI used to partially wtrite code and fix errors--> 
+<!--AI fully write Style part of the code-->
 <html>
   
 <head>
@@ -8,19 +9,69 @@
    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"> </script>
    <style>
        body {
-           font-family: Arial, sans-serif;
-           margin: 40px;
+           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+           margin: 0;
+           min-height: 100vh;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: center;
+           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+           color: #333;
+       }
+       header h2 {
+           color: #ffffff;
+           text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+           text-align: center;
+           margin-bottom: 20px;
        }
        .calculator-box {
-           background-color: #f4f4f4;
-           padding: 20px;
-           border-radius: 8px;
+           background-color: rgba(255, 255, 255, 0.95);
+           padding: 30px;
+           border-radius: 16px;
+           width: 100%;
            max-width: 400px;
+           box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+           box-sizing: border-box;
+       }
+       label {
+           font-weight: 600;
+           font-size: 0.9em;
+           color: #4a5568;
+       }
+       input[type="text"], select {
+           width: 100%;
+           padding: 12px;
+           margin-top: 8px;
+           margin-bottom: 10px;
+           border: 2px solid #e2e8f0;
+           border-radius: 8px;
+           box-sizing: border-box;
+           font-size: 1em;
+           transition: border-color 0.3s;
+       }
+
+       input[type="text"]:focus, select:focus {
+           outline: none;
+           border-color: #667eea;
        }
        .result {
-           margin-top: 15px;
+           margin-top: 20px;
+           padding: 15px;
+           background-color: #ebf4ff;
+           border-left: 5px solid #667eea;
+           border-radius: 8px;
            font-weight: bold;
-           font-size: 1.1em;
+           font-size: 1.2em;
+           color: #2b6cb0;
+           text-align: center;
+       }
+       footer {
+           margin-top: 30px;
+           text-align: center;
+           color: rgba(255, 255, 255, 0.8);
+           font-size: 0.85em;
+           line-height: 1.5;
        }
    </style>
 </head>
